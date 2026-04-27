@@ -78,6 +78,24 @@ Read each section below for the full job description of each layer.
 
 ---
 
+## Layer hierarchy
+
+The five layers are not equals. They have an order of authority.
+
+Reference establishes what works in your niche — by definition, because the references you supplied are pieces with proof. Pattern extracts the structural truth from Reference. Brain fills the content slots inside that structure. Synthesis combines them in that order of authority.
+
+When Brain conflicts with Pattern, Pattern wins.
+
+This matters because there is a real failure mode where a member says "but my voice is more thoughtful" or "my brand is less aggressive" and the engine softens a winning structure to accommodate. That softening produces output that does not perform — because the structure is what made the original references work, not the voice that filled it.
+
+The structural elements of a Pattern — hook formula, beat sequence, retention mechanics, CTA placement, opening pattern interrupt — are load-bearing. They came from work that proved itself. Your voice fills the words inside that structure. Your voice does not flex the structure.
+
+If your voice cannot survive the structure of winning content in your niche, your voice needs to flex, not the structure.
+
+Reference and Pattern are grounded in proven performance. Brain is grounded in member preference. When they conflict, the engine sides with proven performance.
+
+---
+
 ## Data flow
 
 The five layers connect in a single chain. Read this top-to-bottom; each step names who reads what and who writes what.
