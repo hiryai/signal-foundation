@@ -1,5 +1,7 @@
 # aiceOS Foundation
 
+aiceOS is an operating system for AI-powered content engines: installable systems that turn winning content patterns into new content tailored to you and your target audience.
+
 Starter repo for an aiceOS engine builder. This is the foundation every engine module is built on top of: a five-layer engine framework, two clean folders for the layers you populate yourself (Brain and Reference), and a guided command that walks you through filling your Brain so you do not have to edit a markdown file by hand.
 
 ## If you just cloned this, do these steps in order
@@ -50,7 +52,7 @@ For the full layer description and detailed organization guidance, see:
 
 The foundation is now in place. You have a working environment, a populated Brain, a populated Reference folder, and a clear understanding of the five-layer framework — which is exactly the shape every engine module expects to find.
 
-Engine modules are distributed separately from this foundation. Each one specializes the framework for a particular kind of deliverable (video scripts, written posts, offers, thumbnails, emails, and so on) and ships with its own install instructions. Pick the engine that matches what you want to ship next, follow its README, and it will read your Brain and Reference folders, extract Patterns, produce Synthesis, and (over time) close the Feedback loop.
+Engine modules are distributed through the aiceOS Skool community. Once Foundation is in place, log into Skool to install the first engine that matches what you want to ship next. Each one specializes the framework for a particular kind of deliverable (video scripts, written posts, offers, thumbnails, emails, and so on) and ships with its own install instructions. Pick the engine that matches what you want to ship next, follow its README, and it will read your Brain and Reference folders, extract Patterns, produce Synthesis, and (over time) close the Feedback loop.
 
 You are now ready to install one. The foundation work is done.
 
