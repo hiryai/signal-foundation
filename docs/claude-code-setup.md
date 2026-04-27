@@ -1,130 +1,114 @@
 # Claude Code Setup
 
-This is step one of the on-ramp. By the end of this walkthrough you will have Claude Code installed, your API key configured, the `rtd` plugin marketplace added, the `code-foundations` plugin installed, and a working environment ready to run the rest of the foundation steps.
+This is step one of the on-ramp. By the end of this walkthrough you will have Claude Code installed on your computer, signed in to your Anthropic account, the `aiceos-foundation` folder open, the `rtd` plugin marketplace added, the `code-foundations` plugin installed, and a working environment ready to run the rest of the foundation steps.
+
+You will not need to use a terminal. Everything happens through a normal app you download and install like any other.
 
 Each step below is independently followable. If a step fails, fix it before moving on; later steps depend on earlier steps having succeeded.
 
 ## What you need before you start
 
-- A terminal (the default Terminal app on macOS, Windows Terminal, or any terminal emulator on Linux)
-- An editor (any editor works; Claude Code runs in the terminal independent of your editor)
+- A Mac or Windows computer
 - An internet connection
-- An Anthropic API key (you'll set this up in step 2 if you don't have one yet)
+- An Anthropic account (you'll sign in to it in step 2; if you don't have one yet, you can create one for free at the sign-in screen)
 
-## Step 1. Install Claude Code
+## Step 1. Download and install Claude Code
 
-Claude Code is Anthropic's official command-line tool for working with Claude inside a repository. Install it from the official source.
-
-Follow the install instructions at:
+Go to:
 
 ```
-https://docs.anthropic.com/claude/claude-code
+https://claude.com/download
 ```
 
-That page is the canonical install reference and is kept current with whatever the supported install method is on your platform. Follow it end to end.
+That page detects whether you're on Mac or Windows and gives you the correct installer. Download it.
 
-When the install finishes, confirm it worked by opening a terminal and running:
+On Mac, open the downloaded file and drag Claude Code into your Applications folder, the same way you'd install any other Mac app. Then open it from Applications or Launchpad.
 
-```
-claude --version
-```
+On Windows, open the downloaded installer and follow the prompts. When it finishes, open Claude Code from the Start menu.
 
-You should see a version string. If you see a "command not found" error, the install did not complete; go back and rerun the install steps until `claude --version` prints a version.
+You should now see the Claude Code app window open on your screen. If it didn't open, find it in Applications (Mac) or the Start menu (Windows) and click it.
 
-## Step 2. Configure your API key
+## Step 2. Sign in with your Anthropic account
 
-Claude Code needs an Anthropic API key to talk to Claude. If you do not yet have one, create it from your Anthropic account console:
+The first time Claude Code opens, it asks you to sign in. Click the sign-in button and a browser window will open.
 
-```
-https://console.anthropic.com/
-```
+If you already have an Anthropic account (the same one you'd use at claude.ai), sign in with it. If you don't have one, click the option to create one — it's free to make, and you can decide later whether to add a paid plan.
 
-Once you have a key, configure Claude Code to use it. The supported method on every platform is the `ANTHROPIC_API_KEY` environment variable. Set it in your shell profile so it persists across terminal sessions.
+After you sign in, the browser will hand control back to the Claude Code app. The app should now show you its main screen, ready to use.
 
-For zsh (the default on macOS), add this line to `~/.zshrc`:
+## Step 3. Open the `aiceos-foundation` folder
 
-```
-export ANTHROPIC_API_KEY="your-key-here"
-```
+Claude Code works inside a project folder on your computer. You need to point it at the `aiceos-foundation` folder you downloaded.
 
-For bash, add the same line to `~/.bashrc` or `~/.bash_profile`. For Windows PowerShell, set the environment variable through `System Properties` or via:
+In the Claude Code menu bar at the top of the screen, click **File**, then click **Open Folder**.
 
-```
-[System.Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "your-key-here", "User")
-```
+A file picker will appear. Navigate to wherever you saved the `aiceos-foundation` folder, click on the folder once to select it, and click **Open**.
 
-After setting it, open a new terminal so the environment variable is loaded. Verify:
+Important: open the **folder itself**, not a file inside the folder. Claude Code needs the whole folder to be the working area, not a single document.
 
-```
-echo $ANTHROPIC_API_KEY
-```
-
-(or `echo %ANTHROPIC_API_KEY%` on Windows cmd, or `$env:ANTHROPIC_API_KEY` in PowerShell).
-
-You should see your key printed back. If you see an empty line, the variable is not set in this shell session — open a new terminal and try again.
-
-## Step 3. Open Claude Code in this repo
-
-From inside the cloned `aiceos-foundation` directory, run:
-
-```
-claude
-```
-
-Claude Code starts an interactive session. The next three steps run inside that session, not in your shell. Leave the session open from here on.
+The Claude Code window will refresh and you'll see the folder name shown in the app. You're now working inside that project.
 
 ## Step 4. Add the `rtd` plugin marketplace
 
-Inside the running Claude Code session, type the following slash command and press enter:
+At the bottom of the Claude Code window there's a chat input box. That's where you type to Claude.
+
+Click into the input box and type the following exactly, then press enter:
 
 ```
 /plugin marketplace add ryanthedev/rtd-claude-inn
 ```
 
-This registers the `rtd` marketplace with your Claude Code install. Claude Code will confirm the marketplace was added. If it errors, check the spelling — the marketplace identifier is case-sensitive.
+This registers the `rtd` marketplace with your copy of Claude Code. You'll see a confirmation message in the chat that the marketplace was added.
+
+The marketplace name is case-sensitive — the letters need to match exactly as shown above.
 
 ## Step 5. Install the `code-foundations` plugin
 
-Still inside the Claude Code session, install the foundation plugin from the marketplace you just added:
+Still in the same chat input box, type:
 
 ```
 /plugin install code-foundations@rtd
 ```
 
-`code-foundations` is the plugin that ships the building, reviewing, and skill-set this repo's workflow expects. The `@rtd` suffix tells Claude Code which marketplace to install it from.
+Press enter. Claude Code will ask you whether to install the plugin **for you** (user scope) or for this project only. Choose **Install for you** so the plugin is available across every project, not just this one.
 
-Claude Code will fetch the plugin and confirm install. If install fails, the most common cause is that step 4 did not complete; verify the marketplace was added before retrying.
+`code-foundations` is the plugin that ships the building, reviewing, and skill set this repo's workflow expects. The `@rtd` suffix tells Claude Code to install it from the marketplace you added in step 4.
+
+You'll see a confirmation message when the install finishes.
 
 ## Step 6. Reload plugins
 
-Plugins do not become active in the running session until plugins reload. Run:
+The plugin you just installed isn't active yet — Claude Code needs to reload its plugin list so the new commands show up. In the same chat input box, type:
 
 ```
 /reload-plugins
 ```
 
-After the reload completes, the plugin's commands and skills are available in the current session.
+Press enter. The reload happens in a second or two. Once it's done, the plugin's commands are live in your current session.
 
 ## Step 7. Verify
 
-Confirm the install worked. Open the slash-command picker by typing `/` in the Claude Code prompt. You should see commands contributed by the `code-foundations` plugin in the list alongside any built-in commands. Their names are namespaced to the plugin.
+Confirm the install worked.
 
-A second confirmation: run
+In the chat input box, type a single forward slash:
 
 ```
-/plugin
+/
 ```
 
-with no arguments to list installed plugins. `code-foundations` should appear in the list with its version.
+A list of available commands will appear above the input box. Scroll through it. You should see commands that start with `/code-foundations` — those are the commands the plugin just added.
 
-If both checks show `code-foundations` present and active, your environment is ready. Close the Claude Code session if you want to take a break, or move directly to step two of the on-ramp (the engine framework doc) — see the README for the full sequence.
+If you see at least one `/code-foundations` command in the list, your environment is ready.
+
+You can close the Claude Code app if you want a break, or move directly to step two of the on-ramp (the engine framework doc) — see the README for the full sequence.
 
 ## Troubleshooting
 
-- **`claude --version` errors with "command not found".** The install did not finish. Re-run the install instructions from step 1.
-- **`echo $ANTHROPIC_API_KEY` prints an empty line.** Either the variable is not set, or you have not opened a fresh terminal since setting it. Open a new terminal window and try again.
-- **`/plugin marketplace add` errors.** Check the marketplace identifier exactly as written: `ryanthedev/rtd-claude-inn`. It is case-sensitive.
-- **`/plugin install code-foundations@rtd` errors with marketplace not found.** Step 4 did not complete. Re-run step 4, then retry the install.
-- **Plugin commands do not appear after install.** You skipped the `/reload-plugins` step or it did not complete. Re-run it.
+- **The installer is blocked on Mac with a message about an unidentified developer.** Right-click (or hold Control and click) the installer file in Finder, then choose **Open** from the menu. Mac will then let you run it. This is a one-time step.
+- **Sign-in doesn't complete — the browser opens but Claude Code never updates.** Open a new browser tab, go to claude.ai, sign in there first, then go back to Claude Code and click sign in again. This usually resolves it.
+- **Claude Code doesn't recognize the folder you opened.** Make sure you opened the **folder itself**, not a file inside it. Use **File → Open Folder** (not Open File) and click the folder once before clicking Open.
+- **`/plugin marketplace add` returns an error.** Check the spelling and capitalization of `ryanthedev/rtd-claude-inn`. It is case-sensitive — every letter has to match exactly.
+- **`/plugin install code-foundations@rtd` errors with "marketplace not found".** Step 4 didn't complete successfully. Go back and run step 4 again, wait for the confirmation message, then retry the install.
+- **Plugin commands don't appear when you type a forward slash.** You skipped the reload, or it didn't finish. Run `/reload-plugins` again and wait for it to complete.
 
 Once verification passes, return to the README and continue with step two of the on-ramp.
