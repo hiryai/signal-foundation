@@ -1,0 +1,10 @@
+# Local plan files — not part of the shipped repo
+docs/plans/
+
+# OS noise
+.DS_Store
+
+# Local environment
+.env
+.env.local
+.env.*.local
