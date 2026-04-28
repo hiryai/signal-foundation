@@ -1,6 +1,9 @@
 # Local plan files — not part of the shipped repo
 docs/plans/
 
+# Local build artifacts — discovery files, review files, scratch scripts written during /code-foundations:building runs
+docs/building/
+
 # OS noise
 .DS_Store
 
