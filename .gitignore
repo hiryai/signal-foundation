@@ -8,3 +8,6 @@ docs/plans/
 .env
 .env.local
 .env.*.local
+
+# Member-private filled brain — bootstrapped from brain.md.template on first /setup-brain run
+brain/brain.md

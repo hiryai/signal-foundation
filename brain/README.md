@@ -30,6 +30,8 @@ The command will walk you through one section at a time, ask focused questions, 
 
 Editing `brain.md` directly is not the supported path. Use `/setup-brain` rather than typing into the file.
 
+The file ships as `brain.md.template`, not `brain.md`. The first time you run `/setup-brain`, the command bootstraps `brain.md` by copying the template verbatim, then walks you through filling it. `brain.md` is gitignored so your filled answers stay local to your clone and are not committed to the shared Foundation repo. The template stays tracked because it is the on-ramp every new clone needs to get started.
+
 ## What an engine does with your Brain
 
 When an engine module generates an artifact (a script, a post, an offer, a thumbnail, an email), it loads `/brain/brain.md` and combines it with a Pattern extracted from your Reference folder. The output is the Synthesis layer — the actual deliverable. Performance data on what shipped feeds the Feedback layer, which reweights future generations.

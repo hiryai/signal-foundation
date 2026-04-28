@@ -22,19 +22,27 @@ Each section in the template ships with structural prompts plus an HTML-comment 
 
 Execute these steps in order. Do not skip ahead. Do not batch all five sections into a single message; walk one section at a time so the operator can think.
 
-### Step 1. Read
+### Step 1. Bootstrap brain.md from template if missing
+
+Check whether `brain/brain.md` exists at the repo root.
+
+- **If `brain/brain.md` exists**, proceed to Step 2.
+- **If `brain/brain.md` does NOT exist but `brain/brain.md.template` exists**, read `brain/brain.md.template` and write its full contents verbatim to `brain/brain.md`. Do not transform, slug, substitute, or otherwise alter the contents in any way — this is a literal byte-for-byte copy. The only observable side effect of this step is the creation of one new file at `brain/brain.md`. Then tell the operator one line of confirmation: "Initialized brain.md from template — walking you through it now." Then proceed to Step 2.
+- **If both `brain/brain.md` AND `brain/brain.md.template` are missing**, abort with a friendly malformed-repo error: "I can't find brain/brain.md OR brain/brain.md.template in this repo. The Foundation may be malformed; reinstall and try again." Do not write any file in this branch.
+
+### Step 2. Read
 
 Read `brain/brain.md` from the repo root. Identify each of the five sections by its `## <SectionName>` heading. For each section, capture its current body (everything between its heading and the next section's heading, or end-of-file).
 
-### Step 2. Greet and detect
+### Step 3. Greet and detect
 
 Tell the operator you will walk them through their Brain one section at a time. Briefly list the five sections so they know what is coming. Then count how many sections still contain `<!-- fill -->` and tell them how many are unfilled vs already populated.
 
-### Step 3. Walk the five sections in order
+### Step 4. Walk the five sections in order
 
 For each section in the canonical order (Expertise, then Audience, then Voice, then Offers, then Beliefs):
 
-**3a. If the section's body contains `<!-- fill -->`** (it is unfilled):
+**4a. If the section's body contains `<!-- fill -->`** (it is unfilled):
 
   - Announce the section by name and one sentence of context for what it captures.
   - Ask the section's questions (see the question banks below). You may ask them as a single bundled message or as a short back-and-forth, but do NOT advance to the next section until the operator has given you enough to write the section.
@@ -51,14 +59,14 @@ For each section in the canonical order (Expertise, then Audience, then Voice, t
 
   - Briefly show the operator what you wrote and confirm before moving on. If they want a tweak, edit the section, then move on.
 
-**3b. If the section's body does NOT contain `<!-- fill -->`** (it is already populated):
+**4b. If the section's body does NOT contain `<!-- fill -->`** (it is already populated):
 
   - Tell the operator the section is already populated.
   - Show them the current content of that section.
   - Ask: "Revise this section? (yes / no)"
-  - On **yes**: ask the section's questions, synthesize, and write back exactly as in 3a (replacing the existing body). On **no**: leave the section untouched and move to the next section.
+  - On **yes**: ask the section's questions, synthesize, and write back exactly as in 4a (replacing the existing body). On **no**: leave the section untouched and move to the next section.
 
-### Step 4. End-of-flow confirmation
+### Step 5. End-of-flow confirmation
 
 After walking all five sections, summarize each section's status using these labels:
 
@@ -67,7 +75,7 @@ After walking all five sections, summarize each section's status using these lab
 - **kept-existing** — was already populated, operator chose not to revise
 - **still-unfilled** — was unfilled and the operator declined to fill it this session (only happens if the operator explicitly skipped)
 
-Then ask: "Do any of these need another pass?" If yes, return to Step 3 for the named section(s). If no, end the command with a one-line summary: how many sections are now populated, and how many (if any) remain unfilled.
+Then ask: "Do any of these need another pass?" If yes, return to Step 4 for the named section(s). If no, end the command with a one-line summary: how many sections are now populated, and how many (if any) remain unfilled.
 
 ---
 
@@ -123,5 +131,5 @@ These are the focused questions to ask per section. Treat them as the floor, not
 - When you write a filled section, you MUST remove the original structural prompts AND the `<!-- fill -->` sentinel. A filled section contains the operator's content only, under its `## <SectionName>` heading.
 - The sentinel string `<!-- fill -->` is the source of truth for "is this section unfilled?". Do not invent another detection rule.
 - Preserve the file's existing top-of-file intro paragraphs and the `---` separators between sections. Do not rewrite the file from scratch; edit each section in place.
-- If `brain/brain.md` does not exist or is missing one of the five `## <SectionName>` headings, stop and tell the operator the template is malformed. Do not attempt to repair it; that is not this command's job.
+- If `brain/brain.md.template` is missing one of the five `## <SectionName>` headings, or if `brain/brain.md` is missing one of the five `## <SectionName>` headings after the bootstrap step has run, stop and tell the operator the template is malformed. Do not attempt to repair it; that is not this command's job. (The bare-not-exist case for `brain/brain.md` is handled by Step 1 and is not a malformed-repo condition.)
 - End-of-flow confirmation is required even if all five sections were already populated and the operator skipped revising every one of them.
