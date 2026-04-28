@@ -48,7 +48,7 @@ Read each section below for the full job description of each layer.
 
 **Consumed by.** Engines, on every generation. Whatever the deliverable — script, post, offer, thumbnail, email — the engine loads your Brain to fill in the content half of the Synthesis.
 
-**Where it lives.** A single consolidated file: `/brain/brain.md`. It has exactly five sections, one per Brain element: Expertise, Audience, Voice, Offers, Beliefs.
+**Where it lives.** A single consolidated file: `/brain/brain.md`. It has exactly five sections, one per Brain element: Expertise, Audience, Voice, Offers, Beliefs. The file is created from `/brain/brain.md.template` the first time you run `/setup-brain`, so a fresh clone shows only the template until then. The filled `brain.md` is gitignored and stays local to your machine.
 
 **How to populate it.** Run the `/setup-brain` slash command from inside Claude Code in this repo. The command walks you through one section at a time, asks focused questions, and writes your answers back into `brain.md` for you. Do not edit `brain.md` by hand. The command is idempotent — sections you have already filled are skipped on re-run unless you ask to revise them. See `/brain/README.md` for the full description of the Brain layer.
 
